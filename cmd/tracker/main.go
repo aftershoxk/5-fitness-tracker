@@ -33,8 +33,6 @@ func main() {
 		Personal: person,
 	}
 
-	daySteps.Print()
-
 	actioninfo.Info(input, &daySteps)
 
 	// // тренировки
@@ -53,8 +51,6 @@ func main() {
 	}
 
 	fmt.Println("Журнал тренировок")
-
-	trains.Print()
 
 	actioninfo.Info(actions, &trains)
 }

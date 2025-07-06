@@ -7,7 +7,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Yandex-Practicum/tracker/internal/actioninfo"
 	"github.com/Yandex-Practicum/tracker/internal/personaldata"
 	"github.com/Yandex-Practicum/tracker/internal/spentenergy"
 )
@@ -20,12 +19,10 @@ var ErrIncorrectDistance = errors.New("некорректная дистанци
 type DaySteps struct {
 	Steps    int
 	Duration time.Duration
-	Personal personaldata.Personal
+	personaldata.Personal
 
 	Weight float64
 	Height float64
-
-	Dataset []string
 }
 
 func (ds *DaySteps) Parse(datastring string) (err error) {
@@ -60,8 +57,4 @@ func (ds DaySteps) ActionInfo() (string, error) {
 	Info := fmt.Sprintf("Количество шагов: %d.\nДистанция составила %.2f км.\nВы сожгли %.2f ккал.\n",
 		ds.Steps, distance, calories)
 	return Info, nil
-}
-
-func (ds DaySteps) Print() {
-	actioninfo.Info(ds.Dataset, &ds)
 }

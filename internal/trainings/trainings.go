@@ -7,7 +7,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Yandex-Practicum/tracker/internal/actioninfo"
 	"github.com/Yandex-Practicum/tracker/internal/personaldata"
 	"github.com/Yandex-Practicum/tracker/internal/spentenergy"
 )
@@ -21,7 +20,7 @@ type Training struct {
 	Steps        int
 	TrainingType string
 	Duration     time.Duration
-	Personal     personaldata.Personal
+	personaldata.Personal
 
 	Dataset []string
 }
@@ -69,8 +68,4 @@ func (t Training) ActionInfo() (string, error) {
 	Info := fmt.Sprintf("Тип тренировки: %s\nДлительность: %.2f ч.\nДистанция: %.2f км.\nСкорость: %.2f км/ч\nСожгли калорий: %.2f\n",
 		t.TrainingType, t.Duration.Hours(), distance, averageSpeed, calories)
 	return Info, nil
-}
-
-func (t Training) Print() {
-	actioninfo.Info(t.Dataset, &t)
 }
